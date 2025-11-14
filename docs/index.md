@@ -1,45 +1,44 @@
-# <Project Title>: <Modality & Tools> on <Dataset>
+# Resting-State fMRI: Graph Metrics with BRAPH (ADHD-200 preprocessed)
 
-### What this project asks (2–3 lines)
-A crisp statement of the scientific question and why it matters.
+**Goal:** Build functional connectivity matrices from preprocessed resting-state time-series and report basic graph metrics (hubs, small-worldness).
+
+---
+
+## Snapshot
+- **Dataset:** ADHD-200 preprocessed (choose one pipeline release)
+- **Local subset:** <N subjects> · **Disk:** stay in MB–low GB (timeseries/connectomes only)
+- **Tools:** FSL (optional denoise), BRAPH (graph metrics)
+- **Status:** <planned / in progress / complete>
+- **Last updated:** <YYYY-MM-DD>
 
 ---
 
 ## Data
-- **Source:** <dataset name + link> · **License/DUA:** <text>
-- **Subset used:** <n subjects/sessions> · **Approx disk:** <X GB> (raw) / <Y GB> (derivatives)
-- **Layout:** BIDS (if applicable)
-
-> We **do not** commit raw data to the repository. If needed, link to the public source and keep large artifacts out of git. (GitHub looks for an entry file in `/docs` such as `index.md` when you publish Pages from that folder.)
+- **Source:** ADHD-200 preprocessed (public, NITRC account).  
+- **What I downloaded:** atlas timeseries or connectomes; list subjects.  
+- **Layout:** subject folders with timeseries per ROI.
 
 ---
 
 ## Pipeline (high-level)
-Preprocessing → Analysis → Statistics → QC  
-Tools: FreeSurfer / FSL / SPM + CAT12 / Brainstorm / EEGLAB / FieldTrip / BRAPH / MATLAB
-
-Confounds handled (examples): motion, age/sex, site.
+1) (Optional) Additional nuisance regression/bandpass  
+2) Correlation matrix per subject (z-scored)  
+3) Import to BRAPH → compute degree, betweenness, small-worldness  
+4) Group summary; visualize hubs
 
 ---
 
-## Results
-- 2–3 key figures (see `results/figures/`)
-- Report thresholds (e.g., FWE/FDR; cluster-permutation for M/EEG) and effect sizes.
+## Results (to be filled)
+- Figure: mean connectome heatmap; node degree map  
+- Table: top hubs by degree/betweenness
 
 ---
 
 ## Reproducibility
-- **Versions:** see `env/TOOL_VERSIONS.md`
-- **Steps to re-run:** bullet list of actions (no raw data)
-- **Known limits:** sample size, heterogeneity, compute
+- Versions in `env/TOOL_VERSIONS.md`.  
+- Steps: “Download preprocessed timeseries → compute matrices → run BRAPH metrics → export figures.”  
+- Limitations: pipeline choice affects metrics; small N.
 
 ---
 
-## Cite this work
-A `CITATION.cff` is included—GitHub renders a “Cite this repository” box automatically.  
-When you cut a Release and connect to Zenodo, add the DOI badge here.
-
----
-
-### Author & links
-**Rene Andrade Rey** · 🧪 ORCID: https://orcid.org/0000-0001-5627-579X · 🌐 Google Scholar: https://scholar.google.es/citations?hl=es&user=Nl3ApFEAAAAJ
+**Author:** Rene Andrade Rey · 🧪 ORCID: https://orcid.org/0000-0001-5627-579X · 🌐 Scholar: https://scholar.google.es/citations?hl=es&user=Nl3ApFEAAAAJ
