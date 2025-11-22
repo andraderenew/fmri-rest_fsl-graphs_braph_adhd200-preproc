@@ -1,6 +1,6 @@
 # Data Sources & Disk Notes
 
-- Dataset: <name> — <link> — License/DUA: <text>
-- Subset downloaded: <N subjects/sessions> (list IDs if small)
-- Disk budget (target): raw ~<X GB>, derivatives ~<Y GB>
-- Notes: use BIDS layout when possible; do NOT commit raw data.
+- Dataset: **ADHD-200 preprocessed** — link: <release> — Access: cuenta NITRC.
+- Subset downloaded: <10–30 subjects> (timeseries por ROI o connectomes).
+- Disk budget: sin raw; derivados en MB–pocos GB.
+- Notes: carpeta por sujeto; archivo por atlas; no subir datos crudos.
