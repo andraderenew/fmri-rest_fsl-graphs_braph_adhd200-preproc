@@ -1,11 +1,12 @@
 cff-version: 1.2.0
-title: "Neuroimaging Project"
+title: "Resting-State fMRI — Graph Metrics with BRAPH (ADHD-200 preprocessed)"
 message: "If you use this project, please cite it as below."
 type: software
 authors:
   - family-names: "Andrade Rey"
     given-names: "Rene"
     orcid: "https://orcid.org/0000-0001-5627-579X"
+abstract: "Functional connectomes from preprocessed time-series and graph metrics (hubs, small-worldness) using BRAPH."
 license: "MIT"
-repository-code: "https://github.com/andraderenew/<repo>"
+repository-code: "https://github.com/andraderenew/fmri-rest_fsl-graphs_braph_adhd200-preproc"
 url: "https://scholar.google.es/citations?hl=es&user=Nl3ApFEAAAAJ"
