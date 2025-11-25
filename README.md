@@ -1,6 +1,6 @@
 # Resting-State fMRI — Graph Metrics with BRAPH (ADHD-200 preprocessed)
 [![License](https://img.shields.io/github/license/andraderenew/fmri-rest_fsl-graphs_braph_adhd200-preproc)](LICENSE)
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.XXXXXXX-blue)](#cite-this-work)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.17715118-blue)](https://doi.org/10.5281/zenodo.17715118)
 [![Pages](https://img.shields.io/website?url=https%3A%2F%2Fandraderenew.github.io%2Ffmri-rest_fsl-graphs_braph_adhd200-preproc%2F)](https://andraderenew.github.io/fmri-rest_fsl-graphs_braph_adhd200-preproc/)
 ![Release](https://img.shields.io/github/v/release/andraderenew/fmri-rest_fsl-graphs_braph_adhd200-preproc?include_prereleases)
 ![Last commit](https://img.shields.io/github/last-commit/andraderenew/fmri-rest_fsl-graphs_braph_adhd200-preproc)

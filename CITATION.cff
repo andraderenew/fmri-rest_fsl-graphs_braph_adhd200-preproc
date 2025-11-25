@@ -10,3 +10,5 @@ abstract: "Functional connectomes from preprocessed time-series and graph metric
 license: "MIT"
 repository-code: "https://github.com/andraderenew/fmri-rest_fsl-graphs_braph_adhd200-preproc"
 url: "https://scholar.google.es/citations?hl=es&user=Nl3ApFEAAAAJ"
+
+doi: "10.5281/zenodo.17715118"
