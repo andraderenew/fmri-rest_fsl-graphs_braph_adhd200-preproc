@@ -1,0 +1,16 @@
+metric	value
+n_nodes	100.00000000
+n_edges	742.00000000
+density	0.14989899
+mean_degree	14.84000000
+mean_strength	7.58965254
+average_clustering_unweighted	0.54472845
+average_clustering_weighted	0.34440034
+transitivity	0.53006072
+global_efficiency_unweighted	0.49473737
+characteristic_path_length_unweighted	2.36222222
+characteristic_path_length_weighted	4.77866391
+assortativity_degree	0.11433907
+n_communities	4.00000000
+modularity_weighted	0.51149787
+small_world_sigma	2.52714410

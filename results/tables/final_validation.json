@@ -1,0 +1,10 @@
+{
+  "subjects": 10,
+  "nodes": 100,
+  "edges": 742,
+  "density": 0.14989899,
+  "small_world_sigma": 2.5271441,
+  "modularity_weighted": 0.51149787,
+  "top_hub": "LH_Default_Par_2",
+  "figures_present": true
+}

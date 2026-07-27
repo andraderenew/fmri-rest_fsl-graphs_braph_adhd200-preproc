@@ -1,0 +1,13 @@
+name: rsfmri-graphs
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - nilearn[plotting]==0.14.0
+      - networkx
+      - pandas
+      - scipy
+      - scikit-learn
+      - matplotlib

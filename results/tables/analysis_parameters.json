@@ -1,0 +1,33 @@
+{
+  "subjects": 10,
+  "atlas": "Schaefer 2018, 100 parcels, 7 networks, 2 mm",
+  "tr_seconds": 2.0,
+  "high_pass_hz": 0.01,
+  "low_pass_hz": 0.1,
+  "signal_standardization": "zscore_sample",
+  "detrend": true,
+  "global_signal_regression": false,
+  "selected_confounds": [
+    "compcor1",
+    "compcor2",
+    "compcor3",
+    "compcor4",
+    "compcor5",
+    "csf",
+    "motion-pitch",
+    "motion-roll",
+    "motion-x",
+    "motion-y",
+    "motion-yaw",
+    "motion-z",
+    "wm"
+  ],
+  "connectivity": "Pearson correlation",
+  "group_average": "mean in Fisher-z space, transformed back to r",
+  "graph_weight": "absolute correlation magnitude",
+  "graph_density": 0.15,
+  "graph_connectivity_rule": "maximum spanning tree plus strongest remaining edges",
+  "small_world_sigma_niter": 5,
+  "small_world_sigma_nrand": 10,
+  "random_seed": 42
+}

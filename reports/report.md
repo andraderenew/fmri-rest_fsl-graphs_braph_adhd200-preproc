@@ -1,27 +1,19 @@
-# Mini-Report
+# Resting-State fMRI Functional Connectomics: Mini-Report
 
 ## Aim
-<2–3 lines: what you test and why it matters.>
 
-## Data
-Dataset: <name + link> · Subset: <N> · Disk: raw ~<X> GB, derivatives ~<Y> GB.
+To demonstrate a transparent workflow for transforming preprocessed resting-state fMRI into regional time series, functional-connectivity matrices, and graph-theoretical summaries.
 
-## Methods
-Tools: <SPM/CAT12/FS/FSL/EEGLAB/FieldTrip/Brainstorm/BRAPH/MATLAB>.
-Pipeline:
-- <step 1>
-- <step 2>
-- <step 3>
+## Data and methods
+
+Ten public preprocessed ADHD-200 runs were analyzed with Schaefer-100. Regional signals underwent nuisance regression, detrending, sample-z standardization, and 0.01–0.10 Hz filtering. Subject correlation matrices were averaged in Fisher-z space.
+
+A connected graph was constructed from absolute group correlations at approximately 15% density.
 
 ## Results
-- Fig 1: <what it shows> (see `results/figures/fig1.png`)
-- Table 1: <optional> (see `results/tables/table1.csv`)
 
-## QC
-<motion/outliers/surface failures/bad channels/etc.>
+The graph contained 100 nodes and 742 edges. Mean degree was 14.84, global efficiency 0.495, path length 2.362, weighted modularity 0.511, and small-world sigma 2.527. The highest composite hub score occurred in `LH_Default_Par_2`.
 
-## Limitations
-<sample size / heterogeneity / thresholds / compute>
+## Interpretation and limitations
 
-## Reproducibility
-Tool versions: `env/TOOL_VERSIONS.md` · Steps: `README.md`
+Sigma above one is compatible with small-world organization under the implemented reference procedure. These findings are descriptive and should not be generalized beyond this technical sample. No group comparison, hypothesis test, motion censoring, or independent BRAPH replication was conducted.

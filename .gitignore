@@ -9,7 +9,6 @@ Thumbs.db
 *.m~
 *.mex*
 # *.mat   # descomenta si quieres excluir todos los .mat
-
 # FreeSurfer & FSL (derivados pesados)
 surf/
 label/
@@ -23,7 +22,6 @@ fsaverage*
 *ica/
 *.edat2
 *.fsf
-
 # Brainstorm/EEGLAB/FieldTrip
 brainstorm_db/
 derivatives/
@@ -34,11 +32,24 @@ cache/
 *.vhdr
 *.eeg
 *.vmrk
-
 # Proyecto
 /data/
 dataset/
 bids/
-derivatives/
 results/raw_exports/
 reports/tmp/
+# Local ADHD-200 download manifests
+results/tables/dataset_manifest.json
+results/tables/table0_adhd200_subject_manifest.tsv
+results/tables/table0b_adhd200_subject_manifest_corrected.tsv
+# Temporary SSL workaround
+scripts/02_retry_adhd200_nitrc_ssl.sh
+# Local ADHD-200 files and caches
+data/
+work/
+# Temporary local troubleshooting helpers
+# Python
+__pycache__/
+*.py[cod]
+# Local ADHD-200 data, derivatives, caches, and path manifests
+# Temporary local troubleshooting utilities
