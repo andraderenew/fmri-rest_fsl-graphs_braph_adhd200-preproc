@@ -1,0 +1,26 @@
+{
+  "creators": [
+    {
+      "name": "Andrade Rey, Rene",
+      "orcid": "0000-0001-5627-579X",
+      "type": "ProjectMember"
+    }
+  ],
+  "title": "Resting-State fMRI Functional Connectomics and Graph Analysis",
+  "description": "Reproducible resting-state fMRI workflow using a public preprocessed ADHD-200 subset, Schaefer-100 parcellation, Nilearn functional connectivity, NetworkX graph analysis, quality-control tables, hub visualizations, and BRAPH-ready exports.",
+  "version": "1.0.2",
+  "access_right": "open",
+  "keywords": [
+    "resting-state fMRI",
+    "functional connectivity",
+    "graph theory",
+    "ADHD-200",
+    "Nilearn",
+    "NetworkX",
+    "BRAPH",
+    "neuroimaging"
+  ],
+  "license": "mit",
+  "upload_type": "software",
+  "language": "eng"
+}
