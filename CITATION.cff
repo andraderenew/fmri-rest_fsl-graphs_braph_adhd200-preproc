@@ -12,6 +12,7 @@ repository-code: "https://github.com/andraderenew/fmri-rest_fsl-graphs_braph_adh
 url: "https://github.com/andraderenew/fmri-rest_fsl-graphs_braph_adhd200-preproc"
 version: "1.0.2"
 date-released: "2026-07-28"
+doi: "10.5281/zenodo.21650416"
 keywords:
   - "resting-state fMRI"
   - "functional connectivity"
