@@ -7,9 +7,12 @@
     }
   ],
   "title": "Resting-State fMRI Functional Connectomics and Graph Analysis",
-  "description": "Reproducible resting-state fMRI workflow using a public preprocessed ADHD-200 subset, Schaefer-100 parcellation, Nilearn functional connectivity, NetworkX graph analysis, quality-control tables, hub visualizations, and BRAPH-ready exports.",
+  "description": "Reproducible resting-state fMRI workflow using a public preprocessed ADHD-200 subset, Schaefer-100 parcellation, Nilearn functional connectivity, NetworkX graph analysis, quality-control tables, hub visualisations, and BRAPH-ready exports.",
   "version": "1.0.2",
+  "upload_type": "software",
   "access_right": "open",
+  "license": "mit",
+  "language": "eng",
   "keywords": [
     "resting-state fMRI",
     "functional connectivity",
@@ -20,7 +23,12 @@
     "BRAPH",
     "neuroimaging"
   ],
-  "license": "mit",
-  "upload_type": "software",
-  "language": "eng"
+  "notes": "Completed reproducible neuroimaging portfolio workflow.",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/andraderenew/fmri-rest_fsl-graphs_braph_adhd200-preproc",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    }
+  ]
 }

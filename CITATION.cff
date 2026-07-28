@@ -1,12 +1,12 @@
 cff-version: 1.2.0
 title: "Resting-State fMRI Functional Connectomics and Graph Analysis"
-message: "If you use this project, please cite it as below."
+message: "Please cite this software using the metadata below."
 type: software
 authors:
   - family-names: "Andrade Rey"
     given-names: "Rene"
     orcid: "https://orcid.org/0000-0001-5627-579X"
-abstract: "Reproducible resting-state fMRI workflow using a public preprocessed ADHD-200 subset, Schaefer-100 parcellation, Nilearn functional connectivity, NetworkX graph analysis, quality-control tables, hub visualizations, and BRAPH-ready exports."
+abstract: "Reproducible resting-state fMRI workflow using a public preprocessed ADHD-200 subset, Schaefer-100 parcellation, Nilearn functional connectivity, NetworkX graph analysis, quality-control tables, hub visualisations, and BRAPH-ready exports."
 license: "MIT"
 repository-code: "https://github.com/andraderenew/fmri-rest_fsl-graphs_braph_adhd200-preproc"
 url: "https://github.com/andraderenew/fmri-rest_fsl-graphs_braph_adhd200-preproc"
