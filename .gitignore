@@ -53,3 +53,6 @@ __pycache__/
 *.py[cod]
 # Local ADHD-200 data, derivatives, caches, and path manifests
 # Temporary local troubleshooting utilities
+!results/cifti/*.nii
+!results/workbench/group_mean_connectome_RedWhiteBlue.pconn.nii
+!results/workbench/Schaefer2018_100Parcels_7Networks_order.dlabel.nii

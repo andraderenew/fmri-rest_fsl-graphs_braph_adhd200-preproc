@@ -1,0 +1,26 @@
+{
+  "source_dlabel": "results/workbench/Schaefer2018_100Parcels_7Networks_order.dlabel.nii",
+  "source_matrix": "results/tables/table1_group_mean_connectome.tsv",
+  "source_node_metrics": "results/tables/table5_group_node_metrics.tsv",
+  "brainordinates": 64984,
+  "parcels": 100,
+  "seed_label": "LH_Default_Par_2",
+  "seed_key": 41,
+  "seed_hub_rank": 1,
+  "seed_hub_score": 2.37041592,
+  "fingerprint_self_correlation_excluded": true,
+  "pconn_shape": [
+    100,
+    100
+  ],
+  "pconn_vs_public_matrix_max_abs_diff": 2.9718780547582924e-08,
+  "hub_dense_max_abs_error": 4.850524892852093e-08,
+  "fingerprint_dense_max_abs_error": 2.95187377874484e-08,
+  "outputs": [
+    "hub_score.dscalar.nii",
+    "LH_Default_Par_2_fingerprint.dscalar.nii",
+    "hub_score.pscalar.nii",
+    "LH_Default_Par_2_fingerprint.pscalar.nii",
+    "group_mean_connectome.pconn.nii"
+  ]
+}
