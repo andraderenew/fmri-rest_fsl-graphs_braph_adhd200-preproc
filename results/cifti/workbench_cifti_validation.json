@@ -1,7 +1,7 @@
 {
-  "source_dlabel": "/media/andraderenew/Elements/neuroimaging/fmri-rest_fsl-graphs_braph_adhd200-preproc/reference_surface_connectome/Schaefer2018_100Parcels_7Networks_order.dlabel.nii",
-  "source_matrix": "/home/andraderenew/github/fmri-rest_fsl-graphs_braph_adhd200-preproc/results/tables/table1_group_mean_connectome.tsv",
-  "source_node_metrics": "/home/andraderenew/github/fmri-rest_fsl-graphs_braph_adhd200-preproc/results/tables/table5_group_node_metrics.tsv",
+  "source_dlabel": "results/workbench/Schaefer2018_100Parcels_7Networks_order.dlabel.nii",
+  "source_matrix": "results/tables/table1_group_mean_connectome.tsv",
+  "source_node_metrics": "results/tables/table5_group_node_metrics.tsv",
   "brainordinates": 64984,
   "parcels": 100,
   "seed_label": "LH_Default_Par_2",

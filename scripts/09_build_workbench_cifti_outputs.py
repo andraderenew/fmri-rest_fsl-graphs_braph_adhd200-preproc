@@ -184,9 +184,9 @@ def main() -> None:
         raise RuntimeError("pconn parcel-axis names do not match matrix labels")
 
     validation = {
-        "source_dlabel": str(dlabel),
-        "source_matrix": str(matrix_tsv),
-        "source_node_metrics": str(nodes_tsv),
+        "source_dlabel": "results/workbench/Schaefer2018_100Parcels_7Networks_order.dlabel.nii",
+        "source_matrix": "results/tables/table1_group_mean_connectome.tsv",
+        "source_node_metrics": "results/tables/table5_group_node_metrics.tsv",
         "brainordinates": int(brain_axis.size),
         "parcels": 100,
         "seed_label": SEED_LABEL,
