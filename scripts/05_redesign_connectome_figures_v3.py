@@ -205,16 +205,11 @@ def figure_hubs(nodes, coords, atlas_world, out: Path) -> None:
     v2.v1.savefig(fig, out)
 
 
-def figure_network_graph(coords, summary, out: Path) -> None:
-    v2.figure_network_graph(coords, summary, out)
-
-
 def main() -> None:
     args = parse_args()
 
     v2.figure_anatomical_connectome = figure_anatomical_connectome
     v2.figure_hubs = figure_hubs
-    v2.figure_network_graph = figure_network_graph
     v2.main()
 
     validation_path = args.output_dir.resolve() / "redesign_validation.json"

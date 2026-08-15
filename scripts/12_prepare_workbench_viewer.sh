@@ -1,71 +1,128 @@
 #!/usr/bin/env bash
 
-REPO="$HOME/github/fmri-rest_fsl-graphs_braph_adhd200-preproc"
-VENV="$HOME/.venvs/connectome-surface"
-WORK="/media/andraderenew/Elements/neuroimaging/fmri-rest_fsl-graphs_braph_adhd200-preproc"
-CIFTI="$WORK/workbench_cifti_outputs_v1"
-REF="$WORK/reference_surface_connectome"
-VIEW="$WORK/workbench_viewer_v1"
+REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUT="${1:-$REPO/workbench_viewer_build}"
+PYTHON_BIN="${PYTHON_BIN:-python3}"
 
-mkdir -p "$VIEW"
+SCENE_NAME="connectome_surface_pconn_LH_Default_Par_2.scene"
+ATLAS_NAME="Schaefer2018_100Parcels_7Networks_order.dlabel.nii"
+PCONN_NAME="group_mean_connectome_RedWhiteBlue.pconn.nii"
 
-SURFROOT="$($VENV/bin/python - <<'PY'
-from pathlib import Path
-import brainspace
-print(Path(brainspace.__file__).resolve().parent / 'datasets' / 'surfaces')
-PY
-)"
+SCENE_SRC="$REPO/results/workbench/$SCENE_NAME"
+ATLAS_SRC="$REPO/results/workbench/$ATLAS_NAME"
+PCONN_SRC="$REPO/results/workbench/$PCONN_NAME"
 
-L_SRC="$SURFROOT/conte69_32k_lh.gii"
-R_SRC="$SURFROOT/conte69_32k_rh.gii"
-LS_SRC="$SURFROOT/conte69_32k_lh_sphere.gii"
-RS_SRC="$SURFROOT/conte69_32k_rh_sphere.gii"
+echo "REPO=$REPO"
+echo "OUT=$OUT"
+echo "PYTHON_BIN=$PYTHON_BIN"
 
-for f in "$L_SRC" "$R_SRC" "$LS_SRC" "$RS_SRC"; do
+if ! command -v wb_command >/dev/null 2>&1; then
+    echo "ERROR: wb_command is not available on PATH"
+    exit 1
+fi
+
+if ! command -v wb_view >/dev/null 2>&1; then
+    echo "ERROR: wb_view is not available on PATH"
+    exit 1
+fi
+
+if ! "$PYTHON_BIN" -c 'import brainspace' >/dev/null 2>&1; then
+    echo "ERROR: BrainSpace is not importable with $PYTHON_BIN"
+    echo "Activate the connectome-surface environment or set PYTHON_BIN."
+    exit 1
+fi
+
+for f in "$SCENE_SRC" "$ATLAS_SRC" "$PCONN_SRC"; do
     if [ ! -f "$f" ]; then
-        echo "ERROR_MISSING_SURFACE=$f"
+        echo "ERROR: required repository file missing: $f"
         exit 1
     fi
 done
 
-L="$VIEW/Conte69.L.midthickness.32k_fs_LR.surf.gii"
-R="$VIEW/Conte69.R.midthickness.32k_fs_LR.surf.gii"
-LS="$VIEW/Conte69.L.sphere.32k_fs_LR.surf.gii"
-RS="$VIEW/Conte69.R.sphere.32k_fs_LR.surf.gii"
+SURFROOT="$(
+"$PYTHON_BIN" -c '
+from pathlib import Path
+import brainspace
+print(Path(brainspace.__file__).resolve().parent / "datasets" / "surfaces")
+'
+)"
 
-cp "$L_SRC" "$L"
-cp "$R_SRC" "$R"
-cp "$LS_SRC" "$LS"
-cp "$RS_SRC" "$RS"
+L_SRC="$SURFROOT/conte69_32k_lh.gii"
+R_SRC="$SURFROOT/conte69_32k_rh.gii"
 
-wb_command -set-structure "$L" CORTEX_LEFT -surface-type ANATOMICAL -surface-secondary-type MIDTHICKNESS
-wb_command -set-structure "$R" CORTEX_RIGHT -surface-type ANATOMICAL -surface-secondary-type MIDTHICKNESS
-wb_command -set-structure "$LS" CORTEX_LEFT -surface-type SPHERICAL
-wb_command -set-structure "$RS" CORTEX_RIGHT -surface-type SPHERICAL
+for f in "$L_SRC" "$R_SRC"; do
+    if [ ! -f "$f" ]; then
+        echo "ERROR: BrainSpace Conte69 surface missing: $f"
+        exit 1
+    fi
+done
 
-cp "$REF/Schaefer2018_100Parcels_7Networks_order.dlabel.nii" "$VIEW/"
-cp "$CIFTI/hub_score.dscalar.nii" "$VIEW/"
-cp "$CIFTI/LH_Default_Par_2_fingerprint.dscalar.nii" "$VIEW/"
-cp "$CIFTI/hub_score.pscalar.nii" "$VIEW/"
-cp "$CIFTI/LH_Default_Par_2_fingerprint.pscalar.nii" "$VIEW/"
-cp "$CIFTI/group_mean_connectome.pconn.nii" "$VIEW/"
-cp "$CIFTI/workbench_cifti_validation.json" "$VIEW/"
+mkdir -p "$OUT"
 
-SPEC="$VIEW/connectome.spec"
-rm -f "$SPEC"
+L="$OUT/Conte69.L.32k_fs_LR.surf.gii"
+R="$OUT/Conte69.R.32k_fs_LR.surf.gii"
 
-wb_command -spec-file-modify "$SPEC" \
-  -add CORTEX_LEFT "$L" \
-  -add CORTEX_RIGHT "$R" \
-  -add CORTEX_LEFT "$LS" \
-  -add CORTEX_RIGHT "$RS" \
-  -add INVALID "$VIEW/Schaefer2018_100Parcels_7Networks_order.dlabel.nii" \
-  -add INVALID "$VIEW/hub_score.dscalar.nii" \
-  -add INVALID "$VIEW/LH_Default_Par_2_fingerprint.dscalar.nii" \
-  -add INVALID "$VIEW/hub_score.pscalar.nii" \
-  -add INVALID "$VIEW/LH_Default_Par_2_fingerprint.pscalar.nii" \
-  -add INVALID "$VIEW/group_mean_connectome.pconn.nii"
+cp -f "$L_SRC" "$L"
+cp -f "$R_SRC" "$R"
 
-echo "WORKBENCH_VIEWER_PACKAGE_READY"
-echo "VIEW=$VIEW"
-echo "SPEC=$SPEC"
+wb_command \
+  -set-structure \
+  "$L" \
+  CORTEX_LEFT \
+  -surface-type ANATOMICAL \
+  -surface-secondary-type MIDTHICKNESS \
+  || exit 1
+
+wb_command \
+  -set-structure \
+  "$R" \
+  CORTEX_RIGHT \
+  -surface-type ANATOMICAL \
+  -surface-secondary-type MIDTHICKNESS \
+  || exit 1
+
+cp -f "$SCENE_SRC" "$OUT/$SCENE_NAME"
+cp -f "$ATLAS_SRC" "$OUT/$ATLAS_NAME"
+cp -f "$PCONN_SRC" "$OUT/$PCONN_NAME"
+
+if [ -f "$REPO/results/cifti/workbench_cifti_validation.json" ]; then
+    cp -f \
+      "$REPO/results/cifti/workbench_cifti_validation.json" \
+      "$OUT/workbench_cifti_validation.json"
+fi
+
+cat > "$OUT/01_open_scene.sh" <<LAUNCH
+#!/usr/bin/env bash
+HERE="\$(cd "\$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
+wb_view "\$HERE/$SCENE_NAME"
+LAUNCH
+
+chmod +x "$OUT/01_open_scene.sh"
+
+echo
+echo "========================================"
+echo "PORTABLE WORKBENCH PACKAGE"
+echo "========================================"
+
+for f in \
+  "$L" \
+  "$R" \
+  "$OUT/$ATLAS_NAME" \
+  "$OUT/$PCONN_NAME" \
+  "$OUT/$SCENE_NAME"
+do
+    if [ ! -s "$f" ]; then
+        echo "ERROR: missing or empty output: $f"
+        exit 1
+    fi
+    stat -c '%n	%s bytes' "$f"
+done
+
+echo
+echo "Scene:"
+echo "  $OUT/$SCENE_NAME"
+echo
+echo "Launch:"
+echo "  $OUT/01_open_scene.sh"
+echo
+echo "WORKBENCH_PORTABLE_PACKAGE_READY"

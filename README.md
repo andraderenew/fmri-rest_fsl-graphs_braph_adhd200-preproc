@@ -51,19 +51,44 @@ Reproducible resting-state fMRI workflow using a public preprocessed ADHD-200 su
 
 A sigma above 1 is consistent with small-world organization relative to the implemented random-reference graphs. This is a descriptive result for a small technical sample, not a population-level inference.
 
-## Figures
+## Final publication visualization
 
-### Group-mean connectivity matrix
+The final figure combines the validated 100 × 100 group-mean functional
+connectivity matrix with cortical surface maps of hub score, the connectivity
+fingerprint of the highest-ranked hub, and the Schaefer-100 / Yeo-7 reference.
 
-![Group-mean functional connectivity matrix](results/figures/fig1_group_mean_connectome.png)
+![Final surface-based connectome figure](results/figures/publication/figure_main_connectome_surface_matrix_v3.png)
 
-### Strongest group-level connections
+### Native CIFTI outputs
 
-![Group connectome displayed on the brain](results/figures/fig2_group_connectome_brain.png)
+Native Connectome Workbench files are available in `results/cifti/`, including:
 
-### Highest-ranked hubs
+- `group_mean_connectome.pconn.nii`
+- `hub_score.dscalar.nii`
+- `hub_score.pscalar.nii`
+- `LH_Default_Par_2_fingerprint.dscalar.nii`
+- `LH_Default_Par_2_fingerprint.pscalar.nii`
+- `workbench_cifti_validation.json`
 
-![Top functional-connectome hubs](results/figures/fig3_top_hubs.png)
+Parcel order was validated against the official Schaefer-100 fsLR32k CIFTI
+label table. `LH_Default_Par_2` corresponds to parcel 41.
+
+### Interactive Connectome Workbench scene
+
+A portable scene is provided at:
+
+`results/workbench/connectome_surface_pconn_LH_Default_Par_2.scene`
+
+Rebuild the portable viewer with:
+
+```bash
+export PYTHON_BIN="$HOME/.venvs/connectome-surface/bin/python"
+scripts/12_prepare_workbench_viewer.sh /path/to/workbench_viewer
+/path/to/workbench_viewer/01_open_scene.sh
+```
+
+The scene restores cortical surface views together with the full 100 × 100
+parcel-connectivity matrix.
 
 ## Top 10 hubs
 

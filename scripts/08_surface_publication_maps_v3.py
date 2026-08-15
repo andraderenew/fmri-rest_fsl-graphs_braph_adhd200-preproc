@@ -124,11 +124,31 @@ def new_plot(surf_lh, surf_rh) -> Plot:
         layout="grid",
         views=["lateral", "medial"],
         mirror_views=True,
-        size=(1100, 620),
-        zoom=1.45,
+        size=(1180, 560),
+        zoom=1.55,
         background=(1, 1, 1),
-        brightness=0.60,
+        brightness=0.74,
     )
+
+
+def add_view_labels(fig) -> None:
+    labels = [
+        ("LH lateral", 0.25, 0.865),
+        ("RH lateral", 0.75, 0.865),
+        ("LH medial", 0.25, 0.480),
+        ("RH medial", 0.75, 0.480),
+    ]
+    for text, x, y in labels:
+        fig.text(
+            x,
+            y,
+            text,
+            ha="center",
+            va="center",
+            fontsize=9,
+            color="0.25",
+            fontweight="medium",
+        )
 
 
 def add_curvature(p: Plot, curv_lh: np.ndarray, curv_rh: np.ndarray) -> None:
@@ -138,7 +158,7 @@ def add_curvature(p: Plot, curv_lh: np.ndarray, curv_rh: np.ndarray) -> None:
         {"left": curv_lh, "right": curv_rh},
         cmap="Greys",
         color_range=(-q, q),
-        alpha=0.58,
+        alpha=0.28,
         cbar=False,
         zero_transparent=False,
     )
@@ -176,11 +196,12 @@ def figure_networks(
         {"left": net_lh, "right": net_rh}, cmap=cmap, color_range=(1, 7),
         cbar=False, alpha=0.96, zero_transparent=True,
     )
-    add_parcel_outlines(p, label_lh, label_rh, alpha=0.32)
+    add_parcel_outlines(p, label_lh, label_rh, alpha=0.18)
     fig = p.build()
+    add_view_labels(fig)
     fig.suptitle(
-        "Schaefer-100 parcellation grouped by Yeo 7 functional networks",
-        fontsize=14, fontweight="bold", y=0.98,
+        "Schaefer-100 / Yeo 7 functional networks",
+        fontsize=13, fontweight="semibold", y=0.98,
     )
     handles = [
         Patch(facecolor=network_colors[i], edgecolor="none", label=NETWORK_DISPLAY[n])
@@ -205,19 +226,18 @@ def figure_hub_score(
     add_curvature(p, curv_lh, curv_rh)
     p.add_layer(
         {"left": hub_lh, "right": hub_rh}, cmap="RdBu_r", color_range=(-vmax, vmax),
-        cbar=True, cbar_label="Composite hub score (z)", alpha=0.96, zero_transparent=False,
+        cbar=True, cbar_label="Hub score (z)", alpha=0.96, zero_transparent=False,
     )
-    add_parcel_outlines(p, label_lh, label_rh, alpha=0.20)
+    add_parcel_outlines(p, label_lh, label_rh, alpha=0.12)
     p.add_layer(
         {"left": seed_lh, "right": seed_rh}, cmap=ListedColormap(["black"]),
         as_outline=True, cbar=False, alpha=1.0, zero_transparent=True,
     )
     fig = p.build(cbar_kws={"location": "right", "draw_border": False, "aspect": 12,
                             "shrink": 0.28, "decimals": 1, "pad": 0.01})
-    fig.suptitle("Parcel-wise functional-connectome hub score", fontsize=14, fontweight="bold", y=0.98)
-    fig.text(0.5, 0.012, f"Black outline marks the highest-ranked hub: {SEED_LABEL}.",
-             ha="center", fontsize=9)
-    fig.subplots_adjust(top=0.90, bottom=0.08)
+    add_view_labels(fig)
+    fig.suptitle("Functional-connectome hub score", fontsize=13, fontweight="semibold", y=0.98)
+    fig.subplots_adjust(top=0.88, bottom=0.05)
     save_surface_figure(fig, out)
 
 
@@ -236,23 +256,18 @@ def figure_seed_fingerprint(
     add_curvature(p, curv_lh, curv_rh)
     p.add_layer(
         {"left": map_lh, "right": map_rh}, cmap="RdBu_r", color_range=(-vmax, vmax),
-        cbar=True, cbar_label=f"Pearson r with {SEED_LABEL}", alpha=0.96, zero_transparent=False,
+        cbar=True, cbar_label="Pearson r", alpha=0.96, zero_transparent=False,
     )
-    add_parcel_outlines(p, label_lh, label_rh, alpha=0.20)
+    add_parcel_outlines(p, label_lh, label_rh, alpha=0.12)
     p.add_layer(
         {"left": seed_lh, "right": seed_rh}, cmap=ListedColormap(["black"]),
         as_outline=True, cbar=False, alpha=1.0, zero_transparent=True,
     )
     fig = p.build(cbar_kws={"location": "right", "draw_border": False, "aspect": 12,
                             "shrink": 0.28, "decimals": 2, "pad": 0.01})
-    fig.suptitle(f"Connectivity fingerprint of {SEED_LABEL}", fontsize=14, fontweight="bold", y=0.98)
-    fig.text(
-        0.5, 0.012,
-        "Group-mean Pearson r (10 subjects; averaged in Fisher-z and back-transformed). "
-        "Seed self-correlation is excluded; black outline marks the seed parcel.",
-        ha="center", fontsize=8.8,
-    )
-    fig.subplots_adjust(top=0.90, bottom=0.08)
+    add_view_labels(fig)
+    fig.suptitle(f"Connectivity fingerprint — {SEED_LABEL}", fontsize=13, fontweight="semibold", y=0.98)
+    fig.subplots_adjust(top=0.88, bottom=0.05)
     save_surface_figure(fig, out)
     return vmax
 
