@@ -17,3 +17,9 @@ export RSFMRI_WORK_DIR="/path/to/rsfmri-work-directory"
 ```
 
 They are excluded from GitHub. The repository contains scripts, environment files, public summaries, the group matrix, graph metrics, and figures.
+
+## Local manifests and privacy
+
+The download step creates local manifests containing absolute paths to the functional images, confound files, and atlas. These machine-specific manifests are intentionally excluded by `.gitignore` and are not publication outputs.
+
+Functional images, confound files, and phenotypic rows are aligned by the seven-digit ADHD-200 subject identifier rather than by table row position. Public summary tables retain subject identifiers and derived QC/results without exposing local filesystem paths.

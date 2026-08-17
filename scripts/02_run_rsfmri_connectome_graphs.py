@@ -416,6 +416,13 @@ def main() -> None:
         start=1,
     ):
         subject_id = subject_id_from_path(func_file)
+        confound_subject_id = subject_id_from_path(confound_file)
+        if confound_subject_id != subject_id:
+            raise RuntimeError(
+                f"Functional/confound subject mismatch: "
+                f"{func_file} vs {confound_file}"
+            )
+
         image = nib.load(str(func_file))
         n_scans = int(image.shape[-1])
 
