@@ -1,7 +1,7 @@
 # Resting-State fMRI Functional Connectomics and Graph Analysis
 
 [![License](https://img.shields.io/github/license/andraderenew/fmri-rest_fsl-graphs_braph_adhd200-preproc)](LICENSE)
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.17715118-blue)](https://doi.org/10.5281/zenodo.17715118)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.17715117-blue)](https://doi.org/10.5281/zenodo.17715117)
 [![ORCID](https://img.shields.io/badge/ORCID-0000--0001--5627--579X-A6CE39)](https://orcid.org/0000-0001-5627-579X)
 
 Reproducible resting-state fMRI workflow using a public preprocessed ADHD-200 subset, Schaefer-100 parcellation, Nilearn functional connectivity, and NetworkX graph analysis.
