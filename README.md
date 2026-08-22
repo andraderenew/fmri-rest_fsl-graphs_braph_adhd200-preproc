@@ -142,4 +142,4 @@ Raw/preprocessed imaging files, cached files, local path manifests, regional tim
 
 See [`CITATION.cff`](CITATION.cff) or cite:
 
-**Andrade Rey, R.** Resting-State fMRI — Graph Metrics with BRAPH (ADHD-200 preprocessed). Zenodo. https://doi.org/10.5281/zenodo.17715118
+**Andrade Rey, R.** Resting-State fMRI — Graph Metrics with BRAPH (ADHD-200 preprocessed). Zenodo. https://doi.org/10.5281/zenodo.17715117
